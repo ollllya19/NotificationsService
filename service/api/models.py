@@ -5,7 +5,7 @@ class Mailing(models.Model):
     id = models.BigIntegerField(primary_key=True)
     datetime_start = models.DateTimeField()
     message = models.CharField(max_length=1000)
-    filter = models.CharField(max_length=3)
+    filter = models.CharField(max_length=3, default='987')
     datetime_end = models.DateTimeField()
     
     class Meta:
@@ -28,9 +28,8 @@ class Client(models.Model):
         
         
 class Message(models.Model):
-    id = models.BigIntegerField(primary_key=True)
     datetime = models.DateTimeField()
-    is_sent = models.BooleanField()
+    is_sent = models.BooleanField(default=False)
     mailing = models.ForeignKey(Mailing, on_delete=models.CASCADE, related_name="id_mailing")
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="id_client")
     

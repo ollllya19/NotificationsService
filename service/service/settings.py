@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +125,12 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# for mailings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'mail.gmail.com'
+EMAIL_HOST_USER = 's89870209500@yandex.ru'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_PORT = 587
+
+
