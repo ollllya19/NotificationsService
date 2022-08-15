@@ -38,4 +38,6 @@ def send_notification(number):
     ['olenkaa.pavlova.20000@gmail.com'],
     fail_silently=False,)
     
+    
+time_come = django.dispatch.Signal()
         

@@ -1,0 +1,15 @@
+versions: "3.7"
+
+services:
+  redis:
+    image: redis
+    restart: always
+
+  webapp:
+    restart: always
+    build: 
+      contest: ./webapp
+    ports:
+      -"8000:8000"
+    command: CMD ["python3", "./app/manage.py", "runserver", "
+    

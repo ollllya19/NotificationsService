@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Mailing(models.Model):
-    id = models.BigIntegerField(primary_key=True)
     datetime_start = models.DateTimeField()
     message = models.CharField(max_length=1000)
     filter = models.CharField(max_length=3, default='987')
@@ -15,7 +14,6 @@ class Mailing(models.Model):
 
 
 class Client(models.Model):
-    id = models.BigIntegerField(primary_key=True)
     phone = models.CharField(max_length=11)
     phone_code = models.CharField(max_length=3)
     tag = models.CharField(max_length=10)
