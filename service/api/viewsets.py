@@ -1,4 +1,5 @@
 #from django_filters.rest_framework import DjangoFilterBackend
+from itertools import count
 from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
@@ -6,7 +7,6 @@ from rest_framework.views import APIView
 from api.serializers import MailingSerializer, ClientSerializer
 from api.services import MailingViewSetService
 from api.models import Mailing, Client
-from api.tasks import perform_task
 
 
 class MailingViewSet(ModelViewSet):
@@ -28,9 +28,8 @@ class StatisticsViewSet(APIView):
     
     
 class ItemStatisticsViewSet(APIView):
-    perform_task.delay()
+    
     def get(self, request, id):
         return MailingViewSetService(id).get_item_statistics()
             
             
-

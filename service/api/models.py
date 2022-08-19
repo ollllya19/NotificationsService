@@ -12,6 +12,8 @@ class Mailing(models.Model):
         verbose_name_plural = "Mailings"
         ordering = ["-id"]
 
+    def __str__(self):
+        return f"{self.id}: {self.datetime_start} -- {self.filter} -- {self.datetime_end}"
 
 class Client(models.Model):
     phone = models.CharField(max_length=11)
@@ -24,6 +26,10 @@ class Client(models.Model):
         verbose_name_plural = "Clients"
         ordering = ["-id"]
         
+    def __str__(self):
+        return f"{self.id}: {self.phone_code} -- {self.phone}"
+
+        
         
 class Message(models.Model):
     datetime = models.DateTimeField()
@@ -35,3 +41,6 @@ class Message(models.Model):
         verbose_name = "Message"
         verbose_name_plural = "Messages"
         ordering = ["-id"]
+    
+    def __str__(self):
+        return f"{self.id}: {self.datetime} -- {self.is_sent} -- {self.mailing.id} -- {self.client.id}"

@@ -1,7 +1,4 @@
-import json
-from pickle import TRUE
-from tkinter.messagebox import NO
-import requests
+
 from rest_framework import status
 from rest_framework.response import Response
 
