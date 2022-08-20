@@ -7,6 +7,18 @@ from service.celery import app
 
 
 @app.task()
+def perform_mailing_task(mailing_id):
+    perform_mailing(mailing_id)
+     
+    
+@app.task   
+def check_mailings_for_sending_task():
+    print("Periodic mailing")
+    mailings = Mailing.objects.all()
+    for mailing in mailings:
+        perform_mailing(mailing.id)
+       
+       
 def perform_mailing(mailing_id):
     instance = Mailing.objects.get(id=mailing_id)
     if timezone.now() >=  instance.datetime_start and timezone.now() < instance.datetime_end:
@@ -25,16 +37,14 @@ def perform_mailing(mailing_id):
                 response = send_notification(message.client.phone)
                 message.is_sent = True 
     
-    
 def send_notification(number):
     print("Send mail function")
 
-    """send_mail(
+    send_mail(
         'Рассылка',
         f'Рассылка на номер {number}',
         'from@example.com',
         ['olenkaa.pavlova.20000@gmail.com'],
         fail_silently=False,
-    ) """
-
+    )
     
