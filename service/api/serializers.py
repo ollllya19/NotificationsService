@@ -26,3 +26,4 @@ class StatisticsSerializer(serializers.BaseSerializer):
             'sent_true_count': Message.objects.filter(mailing=instance.id).filter(is_sent=True).count(),
             'sent_false_count': Message.objects.filter(mailing=instance.id).filter(is_sent=False).count(),
         }
+        

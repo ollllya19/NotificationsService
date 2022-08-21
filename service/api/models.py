@@ -15,6 +15,7 @@ class Mailing(models.Model):
     def __str__(self):
         return f"{self.id}: {self.datetime_start} -- {self.filter} -- {self.datetime_end}"
 
+
 class Client(models.Model):
     phone = models.CharField(max_length=11)
     phone_code = models.CharField(max_length=3)
@@ -34,8 +35,10 @@ class Client(models.Model):
 class Message(models.Model):
     datetime = models.DateTimeField()
     is_sent = models.BooleanField(default=False)
-    mailing = models.ForeignKey(Mailing, on_delete=models.CASCADE, related_name="id_mailing")
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="id_client")
+    mailing = models.ForeignKey(
+        Mailing, on_delete=models.CASCADE, related_name="id_mailing")
+    client = models.ForeignKey(
+        Client, on_delete=models.CASCADE, related_name="id_client")
     
     class Meta:
         verbose_name = "Message"
