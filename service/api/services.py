@@ -2,8 +2,6 @@
 from rest_framework import status
 from rest_framework.response import Response
 
-from api.repositories import MailingRepository
-from api.serializers  import MailingSerializer
 from api.models import Mailing, Message
 from api.serializers import StatisticsSerializer
 
